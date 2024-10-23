@@ -1,13 +1,24 @@
 {%extends 'base.html'%}
 
+{%load static%}
+
 {%block content%}
 
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
+ {% if post.image%}
+    <img class="card-img-top" src="{{post.image.url}}" >
+    {%else%}
+      <img src="{% static 'placeholder.jpeg' %}">
+        {%endif%}
   <div class="card-body">
     <h5 class="card-title">{{post.title}}</h5>
     <p class="card-text">{{post.content}}</p>
     <p class="card-text">{{post.rate}}</p>
+    <p class="card-text">"{{post.created_at}}</p>
+    <p class="card-text">{{post.updated_at}}</p>
+     {% for tag in post.tags.all %}
+      <a href="#" class="btn btn-secondary">{{tag.name}}</a>
+      {%endfor%}
   </div>
 </div>
 
