@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from posts.views import test_view, main_page, list_view,  detail_view
+from posts.views import (
+test_view,
+main_page,
+list_view,
+detail_view,
+post_create_view,
+)
 from django.contrib.staticfiles.urls import static
 from django.conf import settings
 
@@ -26,6 +32,7 @@ urlpatterns = [
     path('', main_page),
     path("posts/", list_view),
     path('posts/<int:post_id>/', detail_view),
+    path('posts/create/', post_create_view),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(
     settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
 
