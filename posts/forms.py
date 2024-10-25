@@ -34,5 +34,9 @@ class PostForm2(forms.ModelForm):
         fields = ['title', 'content', 'rate', 'image', 'tags']
 
     widgets = {
-        "content": forms.Textarea(attrs={'placeholder': 'Введите текст'}),
+        "content": forms.Textarea(attrs={'placeholder': 'Введите текст',
+                                         'rows':5,
+                                         'cols':30,
+                                         'class':"form-control",
+                                         }),
     }
